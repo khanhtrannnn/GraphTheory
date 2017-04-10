@@ -99,7 +99,7 @@ public class Vietnam_distances {
         }
         return G1;
     }
-    //Function
+    //Function to check if exists a vertex in V1 connect to a vertex that not in V1
     private static boolean prim_con(List<Integer> V1){
         int[] visited = new int[100];
         for (int i = 0;i<64;i++){ edgeList.add(i);} // this is the full edgelist
