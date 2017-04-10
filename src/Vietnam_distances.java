@@ -9,6 +9,7 @@ public class Vietnam_distances {
     public static List<String> cities = new ArrayList<String>();
     public static int[][] adjacency = new int[66][66];
     public static int[][] distances = new int[66][66];
+    public static int[][] Edges = new int[140][3];
     //    public int[][][] distances;
     public static void printMatrix(int[][] A){
         //print matrix out
