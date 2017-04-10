@@ -163,7 +163,7 @@ public class GraphTheory {
         if (check_Almost_euler_result(Almost_euler(A,v))) P = Almost_euler(A,v);
         while (!check_Euler(P,Edges)){
             Edges = removeEdges(P,Edges);
-            G2 = edgesTo_adjacency(Edges);
+            G2 = edgesTo_adjacency(Edges,A);
             for (int i=0;i<G2.length;i++){
                 if(degreeCal(G2,i)>0){
                     w = i;
@@ -192,23 +192,26 @@ public class GraphTheory {
 //        System.arraycopy(b, 0, result, a.length, b.length);
 //        return result;
 //    }
-    private static int[][] edgesTo_adjacency(int[][] Edges){
-        int[][] A = new int[Edges.length][Edges.length];
+    private static int[][] edgesTo_adjacency(int[][] Edges,int[][] A){;
         int count = 0;
-//        for (int i = 0; i < A.length; i++) {
-//            for (int j = 0; j < A[i].length; j++) {
-//                if (A[i][j] ==1 && !checkDuplicate(Edges,i,j)){
-//                    Edges[count][0] = i;
-//                    Edges[count][1]= j ;
-//                    count++;
-//                }
-//            }
-//        }
-        for (int i=0;i<Edges.length;i++){
-
+        int[][] G2 = new int[A.length][A.length];
+        for (int i=0;i<A.length;i++){
+            for (int j=0;j<A[i].length;j++){
+                for (int k=0;k<Edges.length;k++){
+                    if ((Edges[k][0]==i&&Edges[k][1]==j)||(Edges[k][0]==j&&Edges[k][1]==i)) {
+                        G2[i][j] = 1;
+                        G2[j][i] = 1;
+                        }
+                    else {
+                        G2[i][j]=0;
+                        G2[j][i]=0;
+                    }
+                    }
+                }
+            }
+        return G2;
         }
-        return Edges;
-    }
+
     private static int[][] removeEdges(int[] P,int[][] Edges){
         for (int i=0;i<P.length;i++){
             for (int j=0;j<Edges.length;j++){
