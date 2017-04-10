@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by Son on 3/6/2017.
- */
+
 public class Vietnam_distances {
     public static List<String> cities = new ArrayList<String>();
-    public static int[][] adjacency = new int[70][70];
+    public static int[][] adjacency = new int[66][66];
+    public static int[][] distances = new int[66][66];
     //    public int[][][] distances;
     public static void printMatrix(int[][] A){
         //print matrix out
@@ -20,7 +19,7 @@ public class Vietnam_distances {
             System.out.println();
         }
     }
-    public static int getEdges(int[][] A){
+    public static int getNum_Edges(int[][] A){
         int E = 0;
         for (int i =0; i< A.length;i++){
             for (int j =0;j<A[i].length;j++){
@@ -43,6 +42,9 @@ public class Vietnam_distances {
         String[] readLine = line.split(",");
         adjacency[cities.indexOf(readLine[0])][cities.indexOf(readLine[1])] = 1;
         adjacency[cities.indexOf(readLine[1])][cities.indexOf(readLine[0])] = 1;
+        //Store distance in a different matrix
+        distances[cities.indexOf(readLine[0])][cities.indexOf(readLine[1])] = Integer.parseInt(readLine[2]);
+        distances[cities.indexOf(readLine[1])][cities.indexOf(readLine[0])] = Integer.parseInt(readLine[2]);
     }
 
     public static void readFile(String fileName){
@@ -61,13 +63,16 @@ public class Vietnam_distances {
             e.printStackTrace();
         }
     }
+    /**6.Primitive Algorithm**/
+
 
     public static void main(String[] args) {
         readFile("Vietnam_Distances.txt");
-        printMatrix(adjacency);
-        System.out.println(getEdges(adjacency));
+//        printMatrix(adjacency);
+//        printMatrix(distances);
+        System.out.println(getNum_Edges(adjacency));
         System.out.println(getVertices(cities));
-        //       System.out.println(cities.indexOf("Ho Chi Minh City"));
-        for (String city:cities) System.out.println(city);
+//        //       System.out.println(cities.indexOf("Ho Chi Minh City"));
+//        for (String city:cities) System.out.println(city);
     }
 }
