@@ -91,7 +91,7 @@ public class GraphTheory {
         int w = 0, edge = 0;
         P[0] = v;
         int counter = 1;
-        boolean Flag = false; // False is for fail, true everything is going well
+        boolean Flag = false;
         //Find in Edges an edge that start in v
         for (int i =0; i < Edges.length; i++){
             if (Edges[i][0]==v){
@@ -149,7 +149,7 @@ public class GraphTheory {
         }
         else System.out.println("There is no Euler path");
     }
-    //    /**4. Euler circuit**/
+        /**4. Euler circuit**/
     public static int[] Euler_circuit(int[][] A){
         int v = 0,w=0;
         int[] P = new int[0],P2 = new int[0];
@@ -239,8 +239,7 @@ public class GraphTheory {
         }
     }
     public static void main(String[] args) {
-        matrix = readMatrixFile("testEuler.txt", 6);
-        int[] visited = new int[100];
+        matrix = readMatrixFile("testEuler.txt", 6); // n is the number of vertices
         int[] result;
         int[][] result2;
 
@@ -252,16 +251,18 @@ public class GraphTheory {
 //        result = degree(matrix,6);
 //        printMatrix(result);
         /**2. Run path existance algorithm**/
-//        pathExistance(matrix,visited,0,4);
 //        pathExistanceResult(pathExistance(matrix,visited,0,4),0,4);
         //test readEdges
 //            result2 = readEdges(matrix);
 //            System.out.println(result2.length);
 //            print2DMatrix(result2);
 //        //3.Almost_Euler
-//        result = Almost_euler(matrix,1);
+//        result = Almost_euler(matrix,0);
+////        printMatrix(result);
 //        Almost_euler_result(result);
-        //
+//        //4. Euler circuit
+//        result = Euler_circuit(matrix);
+//        printMatrix(result);
 
 
     }

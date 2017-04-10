@@ -69,10 +69,11 @@ public class Vietnam_distances {
 
     public static void main(String[] args) {
         readFile("Vietnam_Distances.txt");
-//        printMatrix(adjacency);
-//        printMatrix(distances);
-        System.out.println(getNum_Edges(adjacency));
-        System.out.println(getVertices(cities));
+        // Print out the adjaccy
+        printMatrix(adjacency);
+        printMatrix(distances); //Matrix of distances between vertices
+        System.out.println(getNum_Edges(adjacency));// Get number of edges
+        System.out.println(getVertices(cities)); //Get number of vertices
 //        //       System.out.println(cities.indexOf("Ho Chi Minh City"));
 //        for (String city:cities) System.out.println(city);
     }
