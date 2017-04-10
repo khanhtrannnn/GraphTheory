@@ -239,26 +239,24 @@ public class GraphTheory {
         }
     }
     public static void main(String[] args) {
-        matrix = readMatrixFile("testEuler.txt", 6); // n is the number of vertices
+        matrix = readMatrixFile("test.txt", 6); // n is the number of vertices
         int[] result;
         int[][] result2;
-
+        int[] visited = new int[100];
 //        System.out.println(matrix[1][2]);
         // Run degree calculation
 //        int result = degreeCal(matrix,0);
 //        System.out.println(result);
         /**1.Code to run degree calculation, it prints of an array of degree of each vertex **/
-//        result = degree(matrix,6);
-//        printMatrix(result);
+        result = degree(matrix,6);
+        printMatrix(result);
         /**2. Run path existance algorithm**/
 //        pathExistanceResult(pathExistance(matrix,visited,0,4),0,4);
-        //test readEdges
-//            result2 = readEdges(matrix);
-//            System.out.println(result2.length);
-//            print2DMatrix(result2);
 //        //3.Almost_Euler
+////        matrix = readMatrixFile("testEuler.txt", 3); // n is the number of vertices
+//        matrix = readMatrixFile("testEuler3.txt", 5);
 //        result = Almost_euler(matrix,0);
-////        printMatrix(result);
+//        printMatrix(result);
 //        Almost_euler_result(result);
 //        //4. Euler circuit
 //        result = Euler_circuit(matrix);
