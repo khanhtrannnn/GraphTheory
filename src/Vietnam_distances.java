@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Vietnam_distances {
     public static List<String> cities = new ArrayList<String>();
-    public static int[][] adjacency = new int[66][66];
-    public static int[][] distances = new int[66][66];
+    public static int[][] adjacency = new int[64][64];
+    public static int[][] distances = new int[64][64];
     public static int[][] Edges = new int[140][3];
     //    public int[][][] distances;
     public static void printMatrix(int[][] A){
@@ -64,16 +64,24 @@ public class Vietnam_distances {
             e.printStackTrace();
         }
     }
-    /**6.Primitive Algorithm**/
+//    /**6.Primitive Algorithm**/
+//    public static void Primitive(int[][] A, int v){
+//        List<Integer> V1 = new ArrayList<Integer>();
+//        V1.add(v);
+//        List<Integer> E = new ArrayList<Integer>();
+//        int[][] G1;
+//
+//    }
+
 
 
     public static void main(String[] args) {
-        readFile("Vietnam_Distances.txt");
+        readFile("vietnam_cities.txt");
         // Print out the adjaccy
-        printMatrix(adjacency);
-        printMatrix(distances); //Matrix of distances between vertices
-        System.out.println(getNum_Edges(adjacency));// Get number of edges
-        System.out.println(getVertices(cities)); //Get number of vertices
+//        printMatrix(adjacency);
+//        printMatrix(distances); //Matrix of distances between vertices
+//        System.out.println(getNum_Edges(adjacency));// Get number of edges
+//        System.out.println(getVertices(cities)); //Get number of vertices
 //        //       System.out.println(cities.indexOf("Ho Chi Minh City"));
 //        for (String city:cities) System.out.println(city);
     }
