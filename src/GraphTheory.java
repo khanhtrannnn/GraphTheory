@@ -30,6 +30,7 @@ public class GraphTheory {
         return temp;
     }
     /**1. Degree of a matrix **/
+    //Calculate degree of a vertice
     private static int degreeCal(int[][] A, int x){
         int sum = 0;
         for (int i=0; i < A[x].length; i++){
@@ -40,6 +41,7 @@ public class GraphTheory {
         else
             return sum;
     }
+    //Calculate degree of all vertices
     private static int[] degree(int[][] A, int n){
         int[] temp = new int[n];
         for (int count =0; count < A.length; count++){
@@ -149,16 +151,47 @@ public class GraphTheory {
     }
     //    /**4. Euler circuit**/
     public static int[] Euler_circuit(int[][] A){
-        int v = 0;
-        int[] P = new int[0];
+        int v = 0,w=0;
+        int[] P = new int[0],P2 = new int[0];
+        int[][] G2;
         int[][] Edges = readEdges(A);
+        //check if all vertices have even degree
+        if (!checkEuler_bydegree(A)){
+            System.out.println("The graph is not Eulerian");
+            return P;
+        }
         if (check_Almost_euler_result(Almost_euler(A,v))) P = Almost_euler(A,v);
         while (!check_Euler(P,Edges)){
             Edges = removeEdges(P,Edges);
-
+            G2 = edgesTo_adjacency(Edges);
+            for (int i=0;i<G2.length;i++){
+                if(degreeCal(G2,i)>0){
+                    w = i;
+                    break;
+                }
+            }
+            P2 = Almost_euler(G2,w);
+            int[] P_final = new int[P.length + P2.length];
+            System.arraycopy(P, 0, P_final, 0, P.length);
+            System.arraycopy(P2, 0, P_final, P.length, P2.length);
+            P = P_final;
         }
         return P;
     }
+    private static boolean checkEuler_bydegree(int[][] A){
+        for (int i=0;i<A.length;i++){
+            if (degreeCal(A,i)%2==1) {
+                return false;
+            }
+        }
+        return true;
+    }
+//    public static int[][] append(int[][] a, int[][] b) {
+//        int[][] result = new int[a.length + b.length][];
+//        System.arraycopy(a, 0, result, 0, a.length);
+//        System.arraycopy(b, 0, result, a.length, b.length);
+//        return result;
+//    }
     private static int[][] edgesTo_adjacency(int[][] Edges){
         int[][] A = new int[Edges.length][Edges.length];
         int count = 0;
